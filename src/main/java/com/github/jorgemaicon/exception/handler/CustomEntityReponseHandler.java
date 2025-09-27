@@ -1,7 +1,7 @@
 package com.github.jorgemaicon.exception.handler;
 
 import com.github.jorgemaicon.exception.ExceptionResponse;
-import com.github.jorgemaicon.exception.UnsupportedMathOperationException;
+import com.github.jorgemaicon.exception.ResoucerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,10 +23,10 @@ public class CustomEntityReponseHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UnsupportedMathOperationException.class)
-    public final ResponseEntity<ExceptionResponse> handleBadRequestExecptions (Exception ex, WebRequest request) {
+    @ExceptionHandler(ResoucerNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> handleNotFoudRequestExecptions (Exception ex, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }
