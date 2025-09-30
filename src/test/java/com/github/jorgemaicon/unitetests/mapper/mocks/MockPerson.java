@@ -3,7 +3,7 @@ package com.github.jorgemaicon.unitetests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.jorgemaicon.data.dto.PersonDTO;
+import com.github.jorgemaicon.data.dto.v1.PersonDTO;
 import com.github.jorgemaicon.model.Person;
 
 public class MockPerson {

@@ -1,8 +1,8 @@
 package com.github.jorgemaicon.controller;
 
-import com.github.jorgemaicon.data.dto.PersonDTO;
+import com.github.jorgemaicon.data.dto.v1.PersonDTO;
+import com.github.jorgemaicon.data.dto.v2.PersonDTOV2;
 import com.github.jorgemaicon.service.PersonServices;
-import com.github.jorgemaicon.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +30,11 @@ public class PersonController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
+    }
+
+    @PostMapping(value = "/v2", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
+        return service.createV2(person);
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

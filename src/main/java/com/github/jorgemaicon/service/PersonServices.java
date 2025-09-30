@@ -1,9 +1,12 @@
 package com.github.jorgemaicon.service;
 
-import com.github.jorgemaicon.data.dto.PersonDTO;
+import com.github.jorgemaicon.data.dto.v1.PersonDTO;
+import com.github.jorgemaicon.data.dto.v2.PersonDTOV2;
 import com.github.jorgemaicon.exception.ResoucerNotFoundException;
 import static com.github.jorgemaicon.mapper.ObjectMapper.parseListObjects;
 import static com.github.jorgemaicon.mapper.ObjectMapper.parseObject;
+
+import com.github.jorgemaicon.mapper.custom.PersonMapper;
 import com.github.jorgemaicon.model.Person;
 import com.github.jorgemaicon.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -21,6 +24,9 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
+
+    @Autowired
+    PersonMapper converter;
 
     private Logger logger = LoggerFactory.getLogger(PersonServices.class.getName());
 
@@ -43,9 +49,15 @@ public class PersonServices {
         logger.info("Creating a Person!");
 
         Person entity = parseObject(person, Person.class);
-        repository.save(entity);
+        return parseObject(repository.save(entity), PersonDTO.class);
+    }
 
-        return person;
+    public PersonDTOV2 createV2(PersonDTOV2 person) {
+        logger.info("Creating a Person V2!");
+
+        var entity = converter.convertDTOToEntity(person);
+
+        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person) {
