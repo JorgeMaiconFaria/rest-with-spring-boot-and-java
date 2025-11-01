@@ -1,0 +1,23 @@
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES
+(2,'Rua dos Moradores de Rua','Pedrinho','female','Santos'),
+(3,'Rua dos Bobos','José','male','Buca de Estopa'),
+(6,'De alcool','Vai para','female','O vinagre'),
+(7,'Rua dos Bobos','João','male','Silva'),
+(8,'Rua dos Bobos','João','male','Silva'),
+(9,'Rua dos Bobos','João','male','Silva'),
+(10,'Rua dos Bobos','João','male','Silva'),
+(11,'Rua dos Bobos','João','male','Silva'),
+(12,'Rua dos Bobos','João','male','Silva'),
+(13,'Rua dos Bobos','João','male','Silva'),
+(14,'Rua dos Bobos','José Carioca','male','Buca de Estopa'),
+(15,'Ruadsfasdfa dos Bobos','João','male','Silva'),
+(16,'De alcool','Vai para','female','O vinagre'),
+(17,'Ruadsfasdfa dos Bobos','João','male','Silva'),
+(18,'Ruadsfasdfa dos Bobos','João','male','Silva'),
+(19,'Ruadsfasdfa dos Bobos','João','male','Silva'),
+(20,'De alcool','Vai para','female','O vinagre'),
+(21,'De alcool','Vai para','female','O vinagre'),
+(22,'Ruadsfasdfa dos Bobos','João','male','Silva'),
+(23,'De alcool','Vai para','female','O vinagre'),
+(24,'De alcool','Vai para','female','O vinagre');
+

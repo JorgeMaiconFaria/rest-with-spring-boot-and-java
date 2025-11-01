@@ -8,11 +8,14 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
     show-sql: false
     open-in-view: false
+  devtools:
+    restart:
+      enabled: true
 logging:
   level:
     root: WARN

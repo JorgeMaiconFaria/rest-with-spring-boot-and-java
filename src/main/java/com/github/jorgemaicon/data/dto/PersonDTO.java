@@ -1,21 +1,22 @@
-package com.github.jorgemaicon.data.dto.v2;
+package com.github.jorgemaicon.data.dto;
+
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
-public class PersonDTOV2 implements Serializable {
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private long id;
     private String firstName;
     private String lastName;
     private String address;
     private String gender;
-    private LocalDate birthDay;
 
-    public PersonDTOV2() {}
+    public PersonDTO() {
+    }
 
     public long getId() {
         return id;
@@ -57,24 +58,15 @@ public class PersonDTOV2 implements Serializable {
         this.gender = gender;
     }
 
-    public LocalDate getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(LocalDate birthDay) {
-        this.birthDay = birthDay;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PersonDTOV2 that = (PersonDTOV2) o;
-        return getId() == that.getId() && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(getGender(), that.getGender()) && Objects.equals(getBirthDay(), that.getBirthDay());
+        if (!(o instanceof PersonDTO person)) return false;
+        return getId() == person.getId() && Objects.equals(getFirstName(), person.getFirstName()) && Objects.equals(getLastName(), person.getLastName()) && Objects.equals(getAddress(), person.getAddress()) && Objects.equals(getGender(), person.getGender());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getAddress(), getGender(), getBirthDay());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getAddress(), getGender());
     }
 }
