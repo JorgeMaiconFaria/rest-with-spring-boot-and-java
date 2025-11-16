@@ -2,6 +2,7 @@ package com.github.jorgemaicon.service;
 
 import com.github.jorgemaicon.controller.PersonController;
 import com.github.jorgemaicon.data.dto.PersonDTO;
+import com.github.jorgemaicon.exception.RequiredObjectIsNullException;
 import com.github.jorgemaicon.exception.ResoucerNotFoundException;
 import static com.github.jorgemaicon.mapper.ObjectMapper.parseListObjects;
 import static com.github.jorgemaicon.mapper.ObjectMapper.parseObject;
@@ -18,12 +19,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class PersonServices {
-
-    private final AtomicLong counter = new AtomicLong();
 
     @Autowired
     PersonRepository repository;
@@ -56,6 +54,10 @@ public class PersonServices {
     }
 
     public PersonDTO create(PersonDTO person) {
+        if(person == null) {
+            throw new RequiredObjectIsNullException();
+        }
+
         logger.info("Creating a Person!");
 
         Person entity = parseObject(person, Person.class);
@@ -66,6 +68,10 @@ public class PersonServices {
     }
 
         public PersonDTO update(PersonDTO person) {
+        if(person == null) {
+            throw new RequiredObjectIsNullException();
+        }
+
         logger.info("Updating a Person!");
         Person entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResoucerNotFoundException("No records found for this ID."));
