@@ -19,7 +19,9 @@ spring:
 logging:
   level:
     root: WARN
-spring-docs:
-  paths-to-match: /api/**/v1/**
+springdoc:
+  paths-to-match:
+    - /api/person/v1/**
+    - /api/book/v1/**  # Inclui os endpoints de ambas as controllers
   swagger-ui:
     use-root-path: true

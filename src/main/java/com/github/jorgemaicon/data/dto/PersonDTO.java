@@ -7,8 +7,6 @@ import java.util.Objects;
 
 public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private long id;
     private String firstName;
     private String lastName;
